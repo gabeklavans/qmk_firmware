@@ -1,4 +1,4 @@
-#include "numpad20.h"
+#include "numpadulator.h"
 
 #ifdef RGB_MATRIX_ENABLE
 led_config_t g_led_config = { {
