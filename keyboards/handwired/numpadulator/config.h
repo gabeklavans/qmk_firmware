@@ -58,6 +58,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define BACKLIGHT_BREATHING
 // #define BACKLIGHT_LEVELS 3
 
+#define OLED_DISPLAY_128X64
+#define OLED_DISPLAY_ADDRESS 0x3D
+
+#define ENCODERS_PAD_A { D4 }
+#define ENCODERS_PAD_B { F4 }
+
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
