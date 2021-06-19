@@ -28,8 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT         Numpadulator
 
 /* key matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 4
+#define MATRIX_ROWS 7
+#define MATRIX_COLS 6
 
 /*
  * Keyboard Matrix Assignments
@@ -51,8 +51,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // The pin connected to the data pin of the LEDs
 #define RGB_DI_PIN D3
 // The number of LEDs connected
-#define DRIVER_LED_TOTAL 1
-#define RGB_MATRIX_STARTUP_VAL 200
+// #define RGBLED_NUM 24 // for RGBLIGHT
+#define DRIVER_LED_TOTAL 24 // for RGBMATRIX
+#define RGB_MATRIX_KEYPRESSES
+#define RGB_MATRIX_STARTUP_VAL 75
 
 // #define BACKLIGHT_PIN B7
 // #define BACKLIGHT_BREATHING
@@ -63,6 +65,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define ENCODERS_PAD_A { D4 }
 #define ENCODERS_PAD_B { F4 }
+#define ENCODER_RESOLUTION 4
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5

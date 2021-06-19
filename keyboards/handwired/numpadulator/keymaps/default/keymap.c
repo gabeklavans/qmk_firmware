@@ -1,11 +1,15 @@
 #include QMK_KEYBOARD_H
 
+enum my_keycodes {
+    FOO = SAFE_RANGE
+};
+
 #define _BASE 0
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
-    RGB_TOG,                   RGB_TOG, \
-    RGB_TOG, KC_PSLS, KC_PAST, KC_PMNS, \
+    RGB_TOG,                   RGB_MOD, \
+    RGB_VAI, RGB_VAD, RGB_M_SW, FOO, \
     KC_P7,   KC_P8,   KC_P9,   KC_PPLS, \
     KC_P4,   KC_P5,   KC_P6,            \
     KC_P1,   KC_P2,   KC_P3,   KC_PENT, \
@@ -13,7 +17,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { /* First encoder */
+        if (clockwise) {
+            // tap_code(RGB_VAD);
+            rgblight_increase_val();
+        } else {
+            // tap_code(RGB_VAI);
+            rgblight_decrease_val();
+        }
+    }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case FOO:
+      if (record->event.pressed) {
+        rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE);
+      } else {
+        // Do something else when release
+      }
+      return false; // Skip all further processing of this key
+    default:
+      return true; // Process all other keycodes normally
+  }
+}
+
 #ifdef OLED_DRIVER_ENABLE
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return OLED_ROTATION_180;
+
+}
+
+
 void oled_task_user(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);

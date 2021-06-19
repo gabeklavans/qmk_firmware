@@ -27,6 +27,7 @@ OLED_DRIVER_ENABLE = yes
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality on B7 by default
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
+RGBLIGHT_ENABLE = no
 ENCODER_ENABLE = yes
 MIDI_ENABLE = no            # MIDI controls
 UNICODE_ENABLE = no         # Unicode
